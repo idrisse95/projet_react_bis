@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import papier from '../images/icon-paper.svg'
 import pierre from '../images/icon-rock.svg'
 import ciseaux from '../images/icon-scissors.svg'
@@ -6,6 +6,14 @@ import { Partie } from '../partie/partie'
 import { Score } from '../score/score'
 
 export const Choix = () => {
+
+    const [acceuil, setAcceuil]
+        = useState('block')
+    const [rebours, setRebours] = useState(3)
+    const [opa, setOpa] = useState('opacity-1')
+    const [solid, setSolid] = useState('')
+    const [partie, setPartie] = useState('hidden')
+
 
     const [imgPerso, setImgperso] = useState()
     const [choix, setChoix] = useState('')
@@ -19,6 +27,42 @@ export const Choix = () => {
 
     const [win, setWin] = useState('')
 
+
+
+
+
+    // effect
+
+
+
+    const e = useEffect
+    e(() => {
+        let cmpt = setInterval(() => {
+
+            setRebours(rebours => rebours - 1)
+            if (rebours <= 0) {
+                setOpa("opacity-0")
+                setSolid('border-[22px] ')
+                setRebours(0)
+            }
+            else {
+
+                setOpa("opacity-1")
+                setSolid('')
+
+            }
+
+        }, 1000)
+        return () => {
+            clearInterval(cmpt)
+        }
+
+    })
+
+
+
+
+    //Function pour le score et random
     const random = () => {
         const border = trois[Math.floor(Math.random() * trois.length)];
         setChoixadv(border);
@@ -31,11 +75,11 @@ export const Choix = () => {
             } else if (border === "yellow") {
                 return <img src={ciseaux} alt="" />;
             } else {
-                console.log('oui');
             }
         });
 
 
+       setTimeout(() => {
         setWin(() => {
             if (choix === "red" && choixAdv === "red") {
                 return 'Egalité red'
@@ -49,72 +93,86 @@ export const Choix = () => {
 
 
             else if (choix === "yellow" && choixAdv === "blue") {
-                setScore(score+1)
+                setScore(score + 1)
                 return 'you win'
             }
             else if (choix === "yellow" && choixAdv === "red") {
                 return 'you lose'
-            } 
-            
+            }
+
             else if (choix === "blue" && choixAdv === "yellow") {
                 return 'you lose'
-            } 
+            }
             else if (choix === "blue" && choixAdv === "red") {
-                setScore(score+1)
+                setScore(score + 1)
                 return 'you win'
             }
             else if (choix === "red" && choixAdv === "yellow") {
-                setScore(score+1)
+                setScore(score + 1)
                 return 'you win'
-            } 
+            }
             else if (choix === "red" && choixAdv === "blue") {
                 return 'you lose'
             }
-             
+
         })
-        console.log(win
-    );
+       }, 6000);
 
-       
 
-        console.log(score);
+
+        setRebours(4)
+        setTimeout(() => {
+            setPartie('block')
+            setAcceuil('hidden')
+        }, 1000);
+
 
     }
 
 
-    console.log(score);
+
 
     //ONCLICK
     const paper = () => {
         setChoix('blue')
         setImgperso(<img src={papier} alt="" />)
-
-
         random()
+
+
     }
 
     const scissors = () => {
         setChoix('yellow')
         setImgperso(<img src={ciseaux} alt="" />)
-
         random()
+
     }
 
     const rock = () => {
         setChoix('red')
         setImgperso(<img src={pierre} alt="" />)
-
         random()
+
+    }
+
+    const rejouer = () => {
+        setTimeout(() => {
+            setPartie('hidden')
+            setAcceuil('block')
+        }, 300);
+
     }
 
 
-    // choixAdv === "blue" ? setImgAdv(<img src={papier} alt="" />) : console.log('');
 
     return (
         <div className='flex justify-center pt-[50px] flex-col items-center'>
-            <div className='w-[1000px] h-[600px] bg-blue-900 pt-10'>
 
-                <Score score={score}/>
+
+
+            <div className={`w-[1000px] h-[600px] bg-blue-900 pt-10 ${acceuil}`}>
+
+                <Score score={score} />
 
                 <div className='flex justify-center mt-[100px]'>
                     <div className='w-[200px] relative h-[275px]' id='bg'>
@@ -134,7 +192,7 @@ export const Choix = () => {
                 </div>
             </div>
 
-            <Partie imgPerso={imgPerso} borderChoix={choix} choixAdv={choixAdv} imgAdv={imgAdv} win={win} />
+            <Partie partie={partie} imgPerso={imgPerso} borderChoix={choix} choixAdv={choixAdv} imgAdv={imgAdv} win={win} opa={opa} solid={solid} rebours={rebours} rejouer={rejouer} />
 
         </div>
 
