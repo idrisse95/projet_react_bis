@@ -1,0 +1,5 @@
+#bg{
+    background: url(../src/components/images/bg-triangle.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
