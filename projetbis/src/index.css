@@ -1,5 +1,220 @@
-#bg{
+#bg {
     background: url(../src/components/images/bg-triangle.svg);
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+#mod {
+    background-color: rgba(0, 0, 0, 0.528);
+}
+
+#o {
+    position: relative;
+}
+#o::after {
+    content: "";
+    width: 120%;
+    height: 120%;
+    position: absolute;
+    border-radius: 50%;
+    /* border: solid 20px rgba(255, 255, 255, 0.253); */
+    top: -20px;
+    left: -20px;
+    right: 0;
+    bottom: 0;
+    animation: b 1s alternate linear infinite; 
+}
+
+#f {
+    position: relative;
+}
+#f::after {
+    content: "";
+    width: 140%;
+    height: 140%;
+    position: absolute;
+    border-radius: 50%;
+    /* border: solid 20px rgba(255, 255, 255, 0.158); */
+    top: -40px;
+    left: -40px;
+    right: 0;
+    bottom: 0;
+    animation: b 2s alternate linear infinite; 
+}
+
+
+#g{
+    position: relative;
+}
+
+#g::after {
+    content: "";
+    width: 160%;
+    height: 160%;
+    position: absolute;
+    border-radius: 50%;
+    /* border: solid 20px rgba(255, 255, 255, 0.06); */
+    top: -60px;
+    left: -60px;
+    right: 0;
+    bottom: 0;
+    animation: b 3s alternate linear infinite; 
+}
+
+
+@keyframes b {
+    0%{
+     
+        border: solid 20px rgba(255, 255, 255, 0.041);
+    }
+    50%{
+        border: solid 20px rgba(255, 255, 255, 0.158);
+
+    }
+    100%{
+        border: solid 20px rgba(255, 255, 255, 0.253);
+
+    }
+}
+
+
+#bg:hover > :not(:hover){
+    opacity: 0.5;
+}
+
+
+.pap{
+    position: absolute;
+    animation: bouge 4s alternate-reverse infinite linear;
+   
+}
+.cis{
+    position: absolute;
+    animation: bouge1 10s alternate-reverse infinite linear;
+}
+.pier{
+    position: absolute;
+    animation: bouge2 11s alternate-reverse infinite linear;
+}
+
+.pap:nth-child(4){
+    animation: bouge3 19s alternate-reverse infinite linear;
+}
+
+.pier:nth-child(6){
+    position: absolute;
+    animation: bouge2 9s alternate-reverse infinite linear;
+}
+
+.cis:nth-child(5){
+    position: absolute;
+    animation: bouge1 5s alternate-reverse infinite linear;
+}
+
+@keyframes bouge {
+    0%{
+        top: 0;
+    }
+    25%{
+        left: 50%;
+        top: 40%;
+    }
+    50%{
+        left: 10%;
+        clip-path: polygon(43,23);
+        top: 40%;
+    }
+    75%{
+        left: 60%;
+        top: 2%;
+    }
+    100%{
+        left: 90%;
+        top: 90%;
+    }
+}
+
+@keyframes bouge1 {
+    0%{
+        top: 20%;
+        left: 10%;
+    }
+    25%{
+        left: 80%;
+        top: 90%;
+    }
+    50%{
+        left: 50%;
+        top: 10%;
+    }
+    75%{
+        left: 20%;
+        top: 70%;
+    }
+    100%{
+        left: 60%;
+        top: 70%;
+    }
+}
+
+@keyframes bouge2 {
+    0%{
+        top: 70%;
+        left: 90%;
+    }
+    25%{
+        left: 0%;
+        top: 70%;
+    }
+    50%{
+        left: 40%;
+        top: 30%;
+    }
+    75%{
+        left: 70%;
+        top: 20%;
+    }
+    100%{
+        left: 50%;
+        top: 90%;
+    }
+}
+@keyframes bouge3 {
+    0%{
+        top: 50;
+        top: 50%;
+    }
+    25%{
+        left: 10%;
+        top: 50%;
+    }
+    50%{
+        left: 70%;
+        top: 80%;
+    }
+    75%{
+        left: 30%;
+        top: 67%;
+    }
+    100%{
+        left: 70%;
+        top: 75%;
+    }
+}
+ 
+
+#img-regl{
+    opacity: 0;
+    transition: 1s;
+}
+#regl:hover #img-regl{
+    opacity: 0.5;
+}
+
+
+
+
+
+#moi{
+    box-shadow: 0 10px 0px yellow;
 }

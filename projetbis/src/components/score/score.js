@@ -7,9 +7,9 @@ export const Score = (props) => {
   return (
     
         <div className='flex justify-center'>
-                <div className='border-2 border-white flex justify-between w-[500px] p-3 rounded-xl'>
+                <div className='border-2 border-white flex justify-between w-[500px] max-sm:w-[360px] p-3 rounded-xl'>
                     <div>
-                        <img src={img1} alt=""  />
+                        <img src={img1} className="max-sm:w-[110px] max-sm:h-full" alt=""  />
                     </div>
                     <div className='bg-white px-7 rounded-xl text-blue-900 text-center py-3'>
                         <p className='text-sm'>Score</p>
